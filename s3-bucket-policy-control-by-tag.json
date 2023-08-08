@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws-cn:iam::111122223333:user/user01"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": "arn:aws-cn:s3:::dataeng-test-bucket-123/*",
+            "Condition": {
+                "StringEquals": {
+                    "s3:ExistingObjectTag/Owner": "${aws:userid}"
+                }
+            }
+        }
+    ]
+}
