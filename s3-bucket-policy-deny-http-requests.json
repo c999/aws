@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Id": "DenyHTTPRequests",
+    "Statement": [
+        {
+            "Sid": "DenyHTTP",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws-cn:s3:::bucket-name",
+                "arn:aws-cn:s3:::bucket-name/*"
+            ],
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            }
+        }
+    ]
+}
